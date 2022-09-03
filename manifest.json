@@ -1,0 +1,85 @@
+{
+  "name": "NoteBook",
+  "short_name": "NoteBook",
+  "description": "Awesome application that will help you take notes.",
+  "categories": ["note", "books", "education", "notebook"],
+  "start_url": "/notebook/",
+  "scope": "/notebook/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#161b22",
+  "theme_color": "#161b22",
+  "shortcuts": [
+    {
+      "name": "Take a note",
+      "url": "/notebook/",
+      "description": "Home Page Shortcut"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/notebook/icons/icon-36x36.png",
+      "type": "image/png",
+      "sizes": "36x36"
+    },
+    {
+      "src": "/notebook/icons/icon-48x48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/notebook/icons/icon-72x72.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "/notebook/icons/icon-96x96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/notebook/icons/icon-144x144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/notebook/icons/icon-180x180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "/notebook/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/notebook/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/notebook/icons/maskable-icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/notebook/icons/maskable-icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/notebook/icons/screenshot-1.png",
+      "sizes": "800x1318",
+      "type": "image/png"
+    },
+    {
+      "src": "/notebook/icons/screenshot-2.png",
+      "sizes": "800x1318",
+      "type": "image/png"
+    }
+  ]
+}
