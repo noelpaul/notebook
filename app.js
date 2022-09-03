@@ -52,22 +52,19 @@ window.APP = {
         .then((reg) => {
           window.APP.controller = reg.active;
           window.APP.registration = reg;
+         console.log('registerd')
 
           if (notFirst) {
-            const sendUpdate = (worker) => {
+            const sendUpdate = () => {
               window.APP.sendMessage(
                 { action: window.APP.ACTIONS.UPDATE_AVAILABLE },
                 window.APP.controller
-              );
-              window.APP.sendMessage(
-                { action: window.APP.ACTIONS.UPDATE_FOUND },
-                worker
               );
             };
 
             if (reg.waiting) {
               window.APP.newServiceWorker = reg.waiting;
-              sendUpdate(reg.waiting);
+              sendUpdate();
             }
 
             reg.addEventListener("updatefound", () => {
@@ -77,7 +74,7 @@ window.APP = {
                 "statechange",
                 () => {
                   if (window.APP.newServiceWorker.state === "installed") {
-                    sendUpdate(window.APP.newServiceWorker);
+                    sendUpdate();
                   }
                 }
               );

@@ -1,8 +1,7 @@
-const version = 1.047;
+const version = 1.049;
 const staticCacheKey = `shell-assets-version-${version}`;
 const dynamicCacheKey = `extra-assets-version-${version}`;
 const dynamicCacheLimit = 15;
-let selfUpdateTimeout;
 const shellAssets = [
   "/notebook/",
   "/notebook/react-ui.js",
@@ -58,8 +57,9 @@ const cacheShellAssets = (fresh) => {
 };
 
 const update = () => {
-  return clearAllCache().then(() => {
-    return cacheShellAssets(true).then(() => self.skipWaiting());
+  cacheShellAssets(true).then(() => {
+    clearAllCache([staticCacheKey, dynamicCacheKey]);
+    self.skipWaiting();
   });
 };
 
@@ -84,19 +84,6 @@ self.addEventListener("message", async (event) => {
       });
       break;
     }
-    case "update-found": {
-      if (selfUpdateTimeout) clearTimeout(selfUpdateTimeout);
-      selfUpdateTimeout = undefined;
-      break;
-    }
-    case "reinstall": {
-      clearAllCache().then(() => {
-        allClients.forEach((client) => {
-          client.postMessage(event.data);
-        });
-      });
-      break;
-    }
     case "version": {
       allClients.forEach((client) => {
         if (event.source.id === client.id) {
@@ -110,20 +97,20 @@ self.addEventListener("message", async (event) => {
 
 // install event
 self.addEventListener("install", (event) => {
-  console.log('install')
+  console.log("install");
   event.waitUntil(
     caches.keys().then((keys) => {
       if (keys.length === 0) {
         cacheShellAssets();
         return self.skipWaiting();
-      } else selfUpdateTimeout = setTimeout(update, 5000);
+      }
     })
   );
 });
 
 //activate event
 self.addEventListener("activate", (event) => {
-  console.log('activate') 
+  console.log("activate");
   event.waitUntil(self.clients.claim());
 });
 

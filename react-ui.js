@@ -211,13 +211,6 @@ const App = () => {
               if (window.APP.newServiceWorker) setUpdateAvailable(true);
               break;
             }
-            case ACTIONS.REINSTALL: {
-              localStorage.removeItem("notFirst");
-              window.APP.registration
-                .unregister()
-                .then(() => window.location.reload());
-              break;
-            }
             case ACTIONS.VERSION: {
               setVersion(event.data.version);
               break;
@@ -409,14 +402,6 @@ const App = () => {
     [notes]
   );
 
-  const reInstall = useCallback(() => {
-    if (confirm("Reinstall Notebook")) {
-      window.APP.sendMessage({
-        action: window.APP.ACTIONS.REINSTALL,
-      });
-    }
-  }, []);
-
   if (updating) return <span class="preloader">Updating</span>;
   else {
     return (
@@ -457,7 +442,6 @@ const App = () => {
               <CheckBox checked={!theme} />
             </button>
             <button onClick={removeall}>Delete All Notes</button>
-            <button onClick={reInstall}>Reinstall Notebook</button>
             <p className="about">version : {version}</p>
             <p className="about">Do not delete localStorage data! Notes are stored in localStorage and could be lost during an update so keep a backup of your important information</p>
           </div>
