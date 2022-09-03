@@ -13,7 +13,14 @@
     {
       "name": "Take a note",
       "url": "/notebook/",
-      "description": "Home Page Shortcut"
+      "description": "Home Page Shortcut",
+      "icons": [
+        {
+          "src": "/notebook/icons/icon-96x96.png",
+          "type": "image/png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ],
   "icons": [

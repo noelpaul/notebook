@@ -443,7 +443,11 @@ const App = () => {
             </button>
             <button onClick={removeall}>Delete All Notes</button>
             <p className="about">version : {version}</p>
-            <p className="about">Do not delete localStorage data! Notes are stored in localStorage and could be lost during an update so keep a backup of your important information</p>
+            <p className="about">
+              Do not delete localStorage data! Notes are stored in localStorage
+              and could be lost during an update so keep a backup of your
+              important information
+            </p>
           </div>
         </div>
 
