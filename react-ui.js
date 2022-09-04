@@ -189,7 +189,7 @@ const App = () => {
   const [isNote, setIsNote] = useState(false);
   const [alert, setAlert] = useState("");
   const [undo, setUndo] = useState(false);
-  const [editing, setEditing] = useState(false);
+  const [editing, setEditing] = useState(null);
   const [showLinks, setShowLinks] = useState(true);
   const [nav, setNav] = useState(false);
   const [updateAvailable, setUpdateAvailable] = useState(false);
@@ -299,9 +299,9 @@ const App = () => {
   }, [textarea.current]);
 
   useEffect(() => {
-    if (editing) {
+    if (editing === true) {
       setNewNote(arrayToString(notes.find((i) => i.id === editing).body));
-    } else {
+    } else if (editing === false) {
       setNewNote("");
     }
   }, [editing]);
