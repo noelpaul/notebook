@@ -223,8 +223,7 @@ const App = () => {
         window.APP.sendMessage({ action: ACTIONS.VERSION });
       });
     textarea.current.focus();
-    document.querySelector(".textarea").selectionStart =
-      document.querySelector(".textarea").value.length;
+    textarea.current.selectionStart = newNote.length;
   }, []);
 
   useEffect(() => {
