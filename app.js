@@ -52,7 +52,7 @@ window.APP = {
         .then((reg) => {
           window.APP.controller = reg.active;
           window.APP.registration = reg;
-         console.log('registerd')
+          console.log("sw registerd");
 
           if (notFirst) {
             const sendUpdate = () => {

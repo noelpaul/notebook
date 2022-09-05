@@ -1,4 +1,4 @@
-const version = 1.054;
+const version = 1.055;
 const staticCacheKey = `shell-assets-version-${version}`;
 const dynamicCacheKey = `extra-assets-version-${version}`;
 const dynamicCacheLimit = 15;

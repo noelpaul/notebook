@@ -274,6 +274,14 @@ const App = () => {
     }, 400);
   }, [notes]);
 
+  useEffect(() => {
+    if (editing) {
+      setNewNote(arrayToString(notes.find((i) => i.id === editing).body));
+    } else if (editing === false) {
+      setNewNote("");
+    }
+  }, [editing]);
+
   const SetNotes = useCallback(
     (newNotes, undoText) => {
       const oldNotes = notes;
@@ -298,14 +306,6 @@ const App = () => {
     el.style.height = el.scrollHeight + "px";
     el.style.overflowY = el.scrollHeight < 170 ? "hidden" : "auto";
   }, [textarea.current]);
-
-  useEffect(() => {
-    if (editing === true) {
-      setNewNote(arrayToString(notes.find((i) => i.id === editing).body));
-    } else if (editing === false) {
-      setNewNote("");
-    }
-  }, [editing]);
 
   const saveEditedNote = useCallback(() => {
     if (isNote) {
